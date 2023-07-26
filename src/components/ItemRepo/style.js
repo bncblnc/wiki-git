@@ -25,6 +25,7 @@ export const ItemContainer = styled.div`
   button {
     font-size: 20px;
     color: #fafafa;
+    transition: all 0.2s;
 
     &:hover {
       color: #fafafa60;

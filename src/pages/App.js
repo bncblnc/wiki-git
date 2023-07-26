@@ -9,6 +9,15 @@ import { api } from "../services/api";
 function App() {
   const [currentRepo, setCurrentRepo] = useState("");
   const [repos, setRepos] = useState([]);
+  const [error, setError] = useState(false);
+
+  const errorStyle = {
+    color: "red",
+    width: "80%",
+    marginTop: "-15px",
+    letterSpacing: "1px",
+    display: `${error ? "block" : "none"}`,
+  };
 
   const handleSearchRepo = async () => {
     api
@@ -20,10 +29,11 @@ function App() {
         if (data && !isExist) {
           setRepos((prev) => [data, ...prev]);
           setCurrentRepo("");
+          setError(false);
         }
       })
       .catch(function (error) {
-        console.log(error.toJSON());
+        setError(true);
       });
   };
 
@@ -39,6 +49,7 @@ function App() {
         value={currentRepo}
         onChange={(e) => setCurrentRepo(e.target.value)}
       />
+      <p style={errorStyle}>*Repositório não encontrado</p>
       <Button onClick={handleSearchRepo} />
       {repos.map((repo, index) => (
         <ItemRepo repo={repo} key={index} deleteFunction={handleDelete} />
