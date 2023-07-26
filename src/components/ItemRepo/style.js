@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const ItemContainer = styled.div`
   width: 80%;
+  position: relative;
 
   h3 {
     font-size: 32px;
@@ -14,13 +15,29 @@ export const ItemContainer = styled.div`
     margin-bottom: 20px;
   }
 
+  a,
   button {
-    display: block;
+    font-size: 20px;
+    color: #fafafa;
+
+    &:hover {
+      color: #fafafa60;
+    }
+  }
+
+  button {
     border: none;
     background: transparent;
-    color: #ff0000;
-    margin: 20px 0;
+    color: #fafafa;
     cursor: pointer;
+  }
+
+  div {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    top: 10px;
+    right: 0;
   }
 
   hr {

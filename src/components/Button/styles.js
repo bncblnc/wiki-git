@@ -11,6 +11,7 @@ export const ButtonStyled = styled.button`
   font-size: 20px;
   cursor: pointer;
   transition: all 0.2s;
+  margin-bottom: 20px;
 
   &:hover {
     background: #fafafa60;
