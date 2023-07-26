@@ -14,10 +14,13 @@ export const ItemContainer = styled.div`
     margin-bottom: 20px;
   }
 
-  a.remover {
+  button {
     display: block;
+    border: none;
+    background: transparent;
     color: #ff0000;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    cursor: pointer;
   }
 
   hr {

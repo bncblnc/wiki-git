@@ -1,7 +1,7 @@
 import React from "react";
 import { ItemContainer } from "./style";
 
-function ItemRepo({ repo }) {
+function ItemRepo({ repo, deleteFunction }) {
   return (
     <ItemContainer>
       <h3>{repo.name}</h3>
@@ -9,9 +9,12 @@ function ItemRepo({ repo }) {
       <a href={repo.html_url} rel="noreferrer" target="_blank">
         Ver repositório
       </a>
-      <a href="#" className="remover">
+      <button
+        className={repo.id}
+        onClick={(e) => deleteFunction(e.currentTarget.className)}
+      >
         Remover
-      </a>
+      </button>
       <hr />
     </ItemContainer>
   );
