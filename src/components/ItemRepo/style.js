@@ -4,6 +4,12 @@ export const ItemContainer = styled.div`
   width: 80%;
   position: relative;
 
+  img {
+    width: 80px;
+    float: left;
+    margin-right: 10px;
+  }
+
   h3 {
     font-size: 32px;
     color: #fafafa;

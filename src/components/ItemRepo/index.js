@@ -5,6 +5,7 @@ import { FaExternalLinkAlt, FaTrashAlt } from "react-icons/fa";
 function ItemRepo({ repo, deleteFunction }) {
   return (
     <ItemContainer>
+      <img src={repo.owner.avatar_url} alt="Foto do usuário do GitHub" />
       <h3>{repo.name}</h3>
       <p>{repo.full_name}</p>
       <div>
