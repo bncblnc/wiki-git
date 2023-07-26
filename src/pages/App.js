@@ -11,17 +11,20 @@ function App() {
   const [repos, setRepos] = useState([]);
 
   const handleSearchRepo = async () => {
-    const { data } = await api.get(`repos/${currentRepo}`);
+    api
+      .get(`repos/${currentRepo}`)
+      .then((response) => {
+        const data = response.data;
+        const isExist = repos.find((repo) => repo.id === data.id);
 
-    if (data.id) {
-      const isExist = repos.find((repo) => repo.id === data.id);
-
-      if (!isExist) {
-        setRepos((prev) => [...prev, data]);
-        setCurrentRepo("");
-        return;
-      }
-    }
+        if (data && !isExist) {
+          setRepos((prev) => [...prev, data]);
+          setCurrentRepo("");
+        }
+      })
+      .catch(function (error) {
+        console.log(error.toJSON());
+      });
   };
 
   return (
@@ -32,8 +35,8 @@ function App() {
         onChange={(e) => setCurrentRepo(e.target.value)}
       />
       <Button onClick={handleSearchRepo} />
-      {repos.map((repo) => (
-        <ItemRepo repo={repo} />
+      {repos.map((repo, index) => (
+        <ItemRepo repo={repo} key={index} />
       ))}
     </Container>
   );
